@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.cu.cs6156_order.mapper.OrderProfileMapper">
+
+    <resultMap id="BaseResultMap" type="edu.cu.cs6156_order.pojo.OrderProfile">
+            <id property="orderId" column="order_id" jdbcType="INTEGER"/>
+            <result property="accountId" column="account_id" jdbcType="INTEGER"/>
+            <result property="orderTime" column="order_time" jdbcType="DATE"/>
+            <result property="total" column="total" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectAllByAccountId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_profile
+        where
+        account_id = #{accountId,jdbcType=NUMERIC}
+    </select>
+
+    <sql id="Base_Column_List">
+        order_id,account_id,order_time,
+        total
+    </sql>
+</mapper>

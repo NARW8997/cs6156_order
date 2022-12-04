@@ -1,0 +1,17 @@
+server:
+  port: 80
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://cs6156hwdb0.culd69w38gsx.us-east-1.rds.amazonaws.com:3306/cs6156_order?characterEncoding=utf-8&useSSL=false
+      username: root
+      password: awdjk123
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
