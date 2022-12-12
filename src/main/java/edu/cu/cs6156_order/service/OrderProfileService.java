@@ -11,5 +11,5 @@ import java.util.List;
 * @createDate 2022-10-28 15:34:09
 */
 public interface OrderProfileService extends IService<OrderProfile> {
-    List<OrderProfile> getAllByAccountId(Integer accountId);
+    List<OrderProfile> getAllByAccountId(String accountId);
 }

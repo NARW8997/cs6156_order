@@ -24,7 +24,7 @@ public class OrderProfile implements Serializable {
     /**
      * 
      */
-    private Integer accountId;
+    private String accountId;
 
     /**
      * 
@@ -36,6 +36,7 @@ public class OrderProfile implements Serializable {
      */
     private Integer total;
 
+    private Integer restId;
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

@@ -10,7 +10,10 @@ import edu.cu.cs6156_order.service.impl.OrderedDishesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/orderProfile")
@@ -73,20 +76,28 @@ public class OrderProfileController {
     }
 
     @GetMapping("/account/{accountId}")
-    public R getAllByAccountIdAndPage(@PathVariable Integer accountId,
-                               @RequestParam("page") Integer currentPage,
-                               @RequestParam("per_page") Integer pageSize) {
+    public Map<String, Object> getAllByAccountIdAndPage(@PathVariable String accountId,
+                                                        @RequestParam("page") Integer currentPage,
+                                                        @RequestParam("per_page") Integer pageSize) {
         Page<OrderProfile> pageProfile = new Page<>(currentPage, pageSize);
         LambdaQueryWrapper<OrderProfile> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(OrderProfile::getAccountId, accountId);
         profileService.page(pageProfile, queryWrapper);
         List<OrderProfile> profiles = pageProfile.getRecords();
-        return new R(true, profiles);
+        long pages = pageProfile.getPages();
+        HashMap<String, Object> res = new HashMap<>();
+        res.put("flag", true);
+        res.put("data", profiles);
+        res.put("numberPages", pages);
+        return res;
     }
 
     @GetMapping("/{accountId}/all")
-    public R getAllByAccountId(@PathVariable Integer accountId) {
+    public R getAllByAccountId(@PathVariable String accountId) {
         List<OrderProfile> profiles = profileService.getAllByAccountId(accountId);
         return new R(true, profiles);
     }
+
+
+
 }

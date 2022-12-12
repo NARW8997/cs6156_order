@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 */
 @Repository
 public interface OrderProfileMapper extends BaseMapper<OrderProfile> {
-    List<OrderProfile> selectAllByAccountId(@Param("accountId") Integer accountId);
+    List<OrderProfile> selectAllByAccountId(@Param("accountId") String accountId);
 }
 
 

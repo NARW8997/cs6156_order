@@ -16,6 +16,6 @@ class Cs6156OrderApplicationTests {
 
     @Test
     void test01() {
-        System.out.println(orderProfileMapper.selectAllByAccountId(6));
+        System.out.println(orderProfileMapper.selectAllByAccountId("6"));
     }
 }

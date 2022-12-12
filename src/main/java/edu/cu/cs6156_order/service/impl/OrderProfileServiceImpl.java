@@ -21,7 +21,7 @@ public class OrderProfileServiceImpl extends ServiceImpl<OrderProfileMapper, Ord
     @Autowired
     OrderProfileMapper orderProfileMapper;
     @Override
-    public List<OrderProfile> getAllByAccountId(Integer accountId) {
+    public List<OrderProfile> getAllByAccountId(String accountId) {
         return orderProfileMapper.selectAllByAccountId(accountId);
     }
 }
