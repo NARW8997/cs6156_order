@@ -68,4 +68,10 @@ public class OrderDishController {
         List<OrderedDish> dishes = pageDish.getRecords();
         return new R(true, dishes);
     }
+
+    @GetMapping("/Profile/{pid}")
+    public R getAllByProfileId(@PathVariable Integer pid) {
+        List<OrderedDish> orderedDishes = dishesService.selectDishByProfileId(pid);
+        return new R(true, orderedDishes);
+    }
 }

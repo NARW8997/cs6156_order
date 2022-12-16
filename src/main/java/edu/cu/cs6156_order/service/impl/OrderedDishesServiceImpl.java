@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import edu.cu.cs6156_order.pojo.OrderedDish;
 import edu.cu.cs6156_order.service.OrderedDishesService;
 import edu.cu.cs6156_order.mapper.OrderedDishesMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
 * @author zeqing wang
@@ -14,7 +17,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderedDishesServiceImpl extends ServiceImpl<OrderedDishesMapper, OrderedDish>
     implements OrderedDishesService{
-
+    @Autowired
+    private OrderedDishesMapper orderedDishesMapper;
+    @Override
+    public List<OrderedDish> selectDishByProfileId(Integer pid) {
+        return orderedDishesMapper.getAllByOrderId(pid);
+    }
 }
 
 

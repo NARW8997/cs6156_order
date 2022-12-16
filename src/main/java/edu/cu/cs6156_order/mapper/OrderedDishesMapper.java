@@ -1,4 +1,6 @@
 package edu.cu.cs6156_order.mapper;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 import edu.cu.cs6156_order.pojo.OrderedDish;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Repository;
 */
 @Repository
 public interface OrderedDishesMapper extends BaseMapper<OrderedDish> {
+    List<OrderedDish> getAllByOrderId(@Param("orderId") Integer orderId);
 }
 
 

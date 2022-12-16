@@ -9,8 +9,15 @@
             <result property="orderId" column="order_id" jdbcType="INTEGER"/>
             <result property="orderedDishId" column="ordered_dish_id" jdbcType="INTEGER"/>
     </resultMap>
+    <select id="getAllByOrderId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ordered_dishes
+        where
+        order_id = #{orderId,jdbcType=NUMERIC}
+    </select>
 
-<!--    <sql id="Base_Column_List">-->
-<!--        dish_id,order_id,ordered_dish_id-->
-<!--    </sql>-->
+        <sql id="Base_Column_List">
+        dish_id,order_id,ordered_dish_id
+    </sql>
 </mapper>
