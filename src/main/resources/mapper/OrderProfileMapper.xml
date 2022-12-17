@@ -10,6 +10,7 @@
             <result property="orderTime" column="order_time" jdbcType="DATE"/>
             <result property="total" column="total" jdbcType="INTEGER"/>
     </resultMap>
+
     <select id="selectAllByAccountId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

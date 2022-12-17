@@ -12,4 +12,6 @@ import java.util.List;
 */
 public interface OrderProfileService extends IService<OrderProfile> {
     List<OrderProfile> getAllByAccountId(String accountId);
+
+    Boolean removeNestedById(Integer orderId);
 }

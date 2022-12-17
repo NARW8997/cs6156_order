@@ -4,6 +4,7 @@ import edu.cu.cs6156_order.mapper.OrderProfileMapper;
 import edu.cu.cs6156_order.mapper.OrderedDishesMapper;
 import edu.cu.cs6156_order.pojo.OrderProfile;
 import edu.cu.cs6156_order.pojo.OrderedDish;
+import edu.cu.cs6156_order.service.OrderProfileService;
 import edu.cu.cs6156_order.service.OrderedDishesService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ class Cs6156OrderApplicationTests {
 
     @Autowired
     OrderedDishesService orderedDishesService;
+
+    @Autowired
+    OrderProfileService orderProfileService;
 
     @Test
     void contextLoads() {

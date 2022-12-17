@@ -64,7 +64,7 @@ public class OrderProfileController {
      */
     @DeleteMapping("/{id}")
     public R deleteById(@PathVariable Integer id) {
-        return new R(profileService.removeById(id));
+        return new R(profileService.removeNestedById(id));
     }
 
     @GetMapping("/{currentPage}/{pageSize}")

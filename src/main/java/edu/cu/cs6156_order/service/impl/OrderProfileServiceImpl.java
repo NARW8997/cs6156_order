@@ -1,7 +1,10 @@
 package edu.cu.cs6156_order.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import edu.cu.cs6156_order.mapper.OrderedDishesMapper;
 import edu.cu.cs6156_order.pojo.OrderProfile;
+import edu.cu.cs6156_order.pojo.OrderedDish;
 import edu.cu.cs6156_order.service.OrderProfileService;
 import edu.cu.cs6156_order.mapper.OrderProfileMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +23,22 @@ public class OrderProfileServiceImpl extends ServiceImpl<OrderProfileMapper, Ord
 
     @Autowired
     OrderProfileMapper orderProfileMapper;
+    @Autowired
+    OrderedDishesMapper orderedDishesMapper;
+
     @Override
     public List<OrderProfile> getAllByAccountId(String accountId) {
         return orderProfileMapper.selectAllByAccountId(accountId);
+    }
+
+    @Override
+    public Boolean removeNestedById(Integer orderId) {
+        // delete order dishes whose orderId = orderId
+        LambdaQueryWrapper<OrderedDish> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(OrderedDish::getOrderId, orderId);
+        orderedDishesMapper.delete(queryWrapper);
+        int i = orderProfileMapper.deleteById(orderId);
+        return i > 0;
     }
 }
 
