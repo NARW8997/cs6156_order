@@ -45,7 +45,7 @@ public class OrderProfileController {
      */
     @PostMapping
     public R insert(@RequestBody OrderProfile profile) {
-        return new R(profileService.save(profile));
+        return new R(profileService.save(profile), profile.getOrderId());
     }
 
     /**
