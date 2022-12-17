@@ -20,4 +20,11 @@
         <sql id="Base_Column_List">
         dish_id,order_id,ordered_dish_id
     </sql>
+    <insert id="insertBatch">
+        insert into ordered_dishes(dish_id,order_id,ordered_dish_id)
+        values
+        <foreach collection="orderedDishCollection" item="item" separator=",">
+            (#{item.dishId,jdbcType=NUMERIC},#{item.orderId,jdbcType=NUMERIC},#{item.orderedDishId,jdbcType=NUMERIC})
+        </foreach>
+    </insert>
 </mapper>

@@ -7,6 +7,7 @@ import edu.cu.cs6156_order.service.impl.OrderedDishesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -42,6 +43,11 @@ public class OrderDishController {
         return new R(dishesService.save(dish));
     }
 
+    @PostMapping("/batch")
+    public R insertBatch(@RequestBody Collection<OrderedDish> orderedDishCollection) {
+        return new R(dishesService.saveBatch(orderedDishCollection));
+    }
+
     /**
      * update(change) an element by its id
      * this method REQUIRES to set Model's id
@@ -74,4 +80,5 @@ public class OrderDishController {
         List<OrderedDish> orderedDishes = dishesService.selectDishByProfileId(pid);
         return new R(true, orderedDishes);
     }
+
 }

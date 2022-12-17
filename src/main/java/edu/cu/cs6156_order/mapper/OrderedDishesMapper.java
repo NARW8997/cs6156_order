@@ -1,4 +1,5 @@
 package edu.cu.cs6156_order.mapper;
+import java.util.Collection;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderedDishesMapper extends BaseMapper<OrderedDish> {
     List<OrderedDish> getAllByOrderId(@Param("orderId") Integer orderId);
+
+    Integer insertBatch(@Param("orderedDishCollection") Collection<OrderedDish> orderedDishCollection);
 }
 
 

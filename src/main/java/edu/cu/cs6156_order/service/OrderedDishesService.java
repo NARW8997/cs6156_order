@@ -3,6 +3,7 @@ package edu.cu.cs6156_order.service;
 import edu.cu.cs6156_order.pojo.OrderedDish;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Collection;
 import java.util.List;
 
 /**

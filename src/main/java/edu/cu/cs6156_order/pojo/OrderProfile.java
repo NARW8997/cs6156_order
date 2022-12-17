@@ -15,25 +15,14 @@ import lombok.Data;
 @TableName(value ="order_profile")
 @Data
 public class OrderProfile implements Serializable {
-    /**
-     * 
-     */
     @TableId(type = IdType.AUTO)
     private Integer orderId;
 
-    /**
-     * 
-     */
     private String accountId;
 
-    /**
-     * 
-     */
     private Date orderTime;
 
-    /**
-     * 
-     */
+
     private Integer total;
 
     private Integer restId;
